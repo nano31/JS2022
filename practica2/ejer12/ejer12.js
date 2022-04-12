@@ -1,12 +1,8 @@
 var numbers = [ 1, 3, 4, 6, 23, 56, 56, 67, 3, 567, 98, 45, 480, 324, 546, 56 ];
-
+var sum = 0;
 
 function reduce(array = [], binaryOperation, initialValue){  
-    let res = 0;
-    for(let i = initialValue; i < array.length; i++){
-        res += binaryOperation(array[i], array[i+1]);
-    }
-    return res;
+   binaryOperation(array,initialValue);
 }
 
 var sum = (x,y) => x + y;
