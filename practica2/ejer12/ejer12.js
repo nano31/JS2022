@@ -2,10 +2,9 @@ var numbers = [ 1, 3, 4, 6, 23, 56, 56, 67, 3, 567, 98, 45, 480, 324, 546, 56 ];
 
 
 function reduce(array, binaryOperation, initialValue){  
-    let res = 0;  
-    for(let i = initialValue; i < 10; i++){
-        return  res += (binaryOperation(array[i], array[i+1]));
-    }
+    array.forEach(element => {
+        binaryOperation(array[initialValue], array[initialValue+1]);
+    });
 
 }
 
