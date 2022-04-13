@@ -1,6 +1,9 @@
 var numbers = [ 1, 3, 4, 6, 23, 56, 56, 67, 3, 567, 98, 45, 480, 324, 546, 56 ];
 var sum = 0;
 
+//utilizo un acumulador y una variable que tenga el valor actual que se esta procesando.
+//el acumulador va guardando el valor de la suma, se inicializa con el valor que se quiere
+//devolver si el array no tiene elementos
 function reduce(array = [], binaryOperation, initialValue){  
    let acc = initialValue;
    array.forEach((cur) => (acc, binaryOperation(acc,cur)));
