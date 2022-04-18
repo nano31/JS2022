@@ -6,11 +6,16 @@ var jsonStr = '['
 + '{"name":"Peter","dob": "1988-03-09T00:00:00.000Z","h": 165,"w": 99},'
 + '{"name":"Lucas","dob": "1910-12-04T00:00:00.000Z","h": 172,"w": 75}]';
 
-function overweigthNames(people = []){
+function overweigthNames(people){
     return people
-    .filter(p => (p.w / Math.pow(p.h / 100, 2)) > 25)
-    .map(p => p.name)
-    .reduce((n1, n2) => n1 + ", " + n2)
+    .filter(p => (p.w / Math.pow(p.h / 100, 2)) > 25) //calcula IMC y filtra aquellos con IMC > 25
+    .map(p => p.name) //crea un nuevo array con el nombre de las personas filtradas
+    .reduce((n1, n2) => n1 + " " + n2) //concatena los nombres del array creado en la linea anterior
 }
+console.log(overweigthNames(JSON.parse(jsonStr)));
 
-JSON.overweigthNames(jsonStr);
+
+const today = new Date();
+console.log(today)
+
+
