@@ -18,4 +18,5 @@ console.log(overweigthNames(JSON.parse(jsonStr)));
 const today = new Date();
 console.log(today)
 
-
+let nuevoArreglo = people.map(JSON.jsonStr);
+console.log(nuevoArreglo);
