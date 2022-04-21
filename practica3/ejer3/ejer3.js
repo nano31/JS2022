@@ -12,3 +12,15 @@ function michi(){
     //let promise = fetch('Url_Api');
     //promise.then();
 }
+
+//funcion encargada de mostrar la imagen del michi uwu
+function ShowMeTheCat(url, w, h){
+    let img = document.createElement('img');
+    img.src = url;
+    img.width = w;
+    img.height = h;
+
+    //crea un elemento imagen en el HTML y muestra la imagen
+    let frame = document.getElementById('frame');
+    frame.appendChild(img);
+}
