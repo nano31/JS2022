@@ -1,7 +1,14 @@
-const imagen = document.querySelector(".img");
-const request = new Request('https://www.purina-latam.com/sites/g/files/auxxlc391/files/styles/kraken_generic_max_width_960/public/purina-porque-lloran-los-gatos.png?itok=LgOSocae')
+function michi(){
+    fetch('Url_Api')//devuelve un objeto promise
+    //promise tiene 2 métodos importantes: then y catch
+        .then(res => res.json()) //recibe un callback (una funcion), la cual se llama cuando el request llega
+        //devuelve el array generado por la API
+        .then(cats => cats[0])//devuelve el primer elemento del objeto
+        .then(cat => ShowMeTheCat(cat.url, cat.width, cat.height))//devuelve los atributos pedidos
+        .catch(err => console.log(err))//se ejecuta solamente si hubo un error
+        
 
-
-fetch(request)
-    .then(res=> res.blob())
-    .then(img => imagen.src = URL.createObjectURL(img))
+    //otra forma de usar Fetch
+    //let promise = fetch('Url_Api');
+    //promise.then();
+}
