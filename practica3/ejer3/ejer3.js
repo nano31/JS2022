@@ -1,3 +1,5 @@
+const Url_Api =  'https://aws.random.cat/meow';
+
 function michi(){
     fetch('Url_Api')//devuelve un objeto promise
     //promise tiene 2 métodos importantes: then y catch
