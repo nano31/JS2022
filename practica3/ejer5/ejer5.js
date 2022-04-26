@@ -13,23 +13,23 @@ function fetchEpisode(){
 }
 
 function searchEpisode(){
-    container.innerHTML = ''; //limpia la pantalla
-    const searchValue = document.getElementById("search-episode").value;
-
-    fetch(API_URL)
-    .then(res => res.json())
+    const input = document.getElementById("search-episode").value.toLowerCase().trim();
+    container.innerHTML = '';
+    fetch(`https://rickandmortyapi.com/api/episode/?name=${input}`)
+    .then(resp => resp.json())
     .then(data => {
-        let episode = data.results[0].name;
-        const li = document.createElement('li');
-        li.innerHTML = episode;
-        container.appendChild(li);
-    })
-    .catch(err => alert(err))
+        //console.log(data)
+        data.results.forEach(element => {
+            ShowEpisode(element);
+        });
+    });
 
 }
 
+
 function ShowEpisode(episode){
     const li = document.createElement('li');
+    li.classList.add("episode");
 
     const name = document.createElement('p');
     name.textContent = episode.name;
