@@ -24,7 +24,7 @@ function createPokemon(pokemon){
     cardContainer.classList.add("card-container");
 
     const card = document.createElement("div");
-  card.classList.add("pokemon-block");
+    card.classList.add("pokemon-block");
 
   const spriteContainer = document.createElement("div");
   spriteContainer.classList.add("img-container");
