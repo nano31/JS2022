@@ -1,16 +1,31 @@
-fetch('https://api.thecatapi.com/v1/images/search')
-.then(response => response.json())
-//.then(data => console.log(data))
-.then(cat => cat[0])
-.then(cats => ShowMeTheCat(cats.url, 400, 400))
+function michi(){
+    fetch('https://api.thecatapi.com/v1/images/search')
+    .then(response => response.json())
+    //.then(data => console.log(data))
+    .then(cat => cat[0])
+    .then(cats => ShowMeTheCat(cats.url, 400, 400))
+    .catch(err => console.log(err));
 
+}
 function ShowMeTheCat(url, w, h){
+    const tiempo = 5;
     let img = document.createElement('img');
-    let frame = document.getElementById('frame');
+    
 
     img.src = url
     img.height = h;
     img.width = w;
 
-    frame.appendChild(img);
+    let frame = document.getElementById('frame');
+
+    while(frame.firstChild != null){
+    //si el elemento tiene hijos, los borra a todos
+        frame.removeChild(frame.firstChild);
+    }
+
+    //le seteo un escuchador para el elemento load.
+    img.addEventListener('load', function(){ setTimeout(michi, tiempo*1000) })
+
+    frame.appendChild(img);//en este momento busca y muestra la img
+    
 }
