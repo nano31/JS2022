@@ -5,8 +5,8 @@ function RickAndMorty(id){
     fetch(`https://rickandmortyapi.com/api/episode/${id}/`)
     .then(response => response.json())
     .then(data =>{
-        //ShowEpisode(data)
-        console.log(data)
+        ShowEpisode(data)
+        //console.log(data)
     })
 }
 
@@ -25,10 +25,14 @@ function ShowEpisode(episode){
     const name = document.createElement("p");
     name.textContent = episode.name
 
-    const episodeUrl = document.createElement("link");
+    const episodeUrl = document.createElement("p");
     episodeUrl.textContent = episode.url;
 
+    const airDate = document.createElement("p");
+    airDate.textContent = episode.air_date;
+
     li.appendChild(name);
+    li.appendChild(airDate);
     li.appendChild(episodeUrl);
 
     container.appendChild(li);
