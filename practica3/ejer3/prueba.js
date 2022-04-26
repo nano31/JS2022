@@ -21,6 +21,8 @@ function ShowMeTheCat(url, w, h){
     while(frame.firstChild != null){
     //si el elemento tiene hijos, los borra a todos
         frame.removeChild(frame.firstChild);
+    //si no se eliminan los hijos, las img se van a ubicar una debajo de la otra
+    //generando una especie de scroll infinito.
     }
 
     //le seteo un escuchador para el elemento load.
