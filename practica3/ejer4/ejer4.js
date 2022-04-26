@@ -1,18 +1,36 @@
-const URL_EPISODES = 'https://rickandmortyapi.com/api/episode';
+//const URL_EPISODES = 'https://rickandmortyapi.com/api/episode';
+const container = document.getElementById("episodes-container");
 
-function RickAndMorty(){
-    fetch(URL_EPISODES)
+function RickAndMorty(id){
+    fetch(`https://rickandmortyapi.com/api/episode/${id}/`)
     .then(response => response.json())
-    .then(data => data[0])
-    .then(episode => ShowEpisode(episode.name))
+    .then(data =>{
+        //ShowEpisode(data)
+        console.log(data)
+    })
 }
 
-function ShowEpisode(name){
-    let li = document.createElement('li');
+function getEpisode(number){
+    for(let i = 1; i <= number; i++){
+        RickAndMorty(i);
+    }
+}
 
-    let container = document.getElementById('container');
+getEpisode(8);
+
+function ShowEpisode(episode){
+    const li = document.createElement('li');
+    li.classList.add("episode");
+
+    const name = document.createElement("p");
+    name.textContent = episode.name
+
+    const episodeUrl = document.createElement("link");
+    episodeUrl.textContent = episode.url;
+
+    li.appendChild(name);
+    li.appendChild(episodeUrl);
+
     container.appendChild(li);
 
-    li.appendChild(p);
-    p = name;
 }
