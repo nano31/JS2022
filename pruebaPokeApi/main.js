@@ -1,9 +1,10 @@
-const pokemonContainer = document.querySelector('.pokemon-container');
+const pokemonContainer = document.getElementById('pokemon-container');
 
 function fetchPokemon(id){ //se puede pasar el nombre o el if
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
     .then(res => res.json()) //convierte lo obtenido a un objeto json
     .then(data =>{
+        //console.log(data);
         createPokemon(data);
     }) //muestra en la consola 
 }
@@ -23,19 +24,30 @@ function createPokemon(pokemon){
     cardContainer.classList.add("card-container");
 
     const card = document.createElement("div");
-    card.classList.add("pokemon-block");
+  card.classList.add("pokemon-block");
 
-    const name = document.createElement("p");
-    name.textContent = pokemon.name;
+  const spriteContainer = document.createElement("div");
+  spriteContainer.classList.add("img-container");
 
-    const number = document.createElement("p");
-    number.textContent = `#${pokemon.id}`;
+  const sprite = document.createElement("img");
+  sprite.src = pokemon.sprites.front_default;
 
-    card.appendChild(name);
-    card.appendChild(number);
+  spriteContainer.appendChild(sprite);
 
-    cardContainer.appendChild(card);
-    pokemonContainer.appendChild(cardContainer);
+  const number = document.createElement("p");
+  number.textContent = `#${pokemon.id.toString().padStart(3, 0)}`;
+
+  const name = document.createElement("p");
+  name.classList.add("name");
+  name.textContent = pokemon.name;
+
+  card.appendChild(spriteContainer);
+  card.appendChild(number);
+  card.appendChild(name);
+
+  cardContainer.appendChild(card);
+  pokemonContainer.appendChild(cardContainer);
 }
 
 fetchPokemons(9); //muestra los primeros 9 pokemons en la consola
+
